@@ -38,9 +38,9 @@ export default function Button({onClick, label, spaces = 1, operation}) {
   
   const stylesButton = [styles.button, widthButton(spaces)]
   if(operation) stylesButton.push(styles.operationButton)
-  
+
   return (
-    <TouchableHighlight onPress={onClick}>
+    <TouchableHighlight onPress={() => onClick(label)}>
       <Text style={stylesButton}>{label}</Text>
     </TouchableHighlight>
   )
