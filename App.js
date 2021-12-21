@@ -53,8 +53,8 @@ export default function App() {
     if(clearDisplay == false){
       resultBuffer = calculation(resultBuffer, lastOperation, newDisplayValue)
     }
-    lastOperation = newOperation;
 
+    lastOperation = newOperation;
     clearDisplay = true;
 
     setDisplayValue(resultBuffer.toString())
@@ -76,7 +76,7 @@ export default function App() {
         if(buffer == 0) return value
         return buffer / value 
       } else {
-        return buffer
+        return value
       }
   }
 
