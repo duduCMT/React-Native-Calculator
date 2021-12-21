@@ -1,5 +1,6 @@
 # Simple Calculator - React Native
 [![](https://img.shields.io/badge/version-0.0.1-yellow)](#) 
+[![](https://img.shields.io/badge/license-MIT-green)](https://github.com/duduCMT/React-Native-Calculator/blob/master/LICENSE) 
 ## 📸 Preview
 
 <p align="center">
@@ -33,8 +34,9 @@ Esse projeto foi criado com o objetivo de criar um aplicativo simples com as pri
 3. Tenha o [React Native CLI](https://reactnative.dev/docs/environment-setup) instalado em sua máquina junto a um virtual device Android ou iOS.
 
 🚩 **Como Executar:**
-1. Para executar o projeto você deve seguir os passos mostrados na documentação do [React Native CLI](https://reactnative.dev/docs/environment-setup). Dependendo do seu sistema operacional e plataforma de execução você deve usar comandos diferentes.
-2. Caso você queira testar no Windows usando um virtual device Android execute o comando: ` npx react-native run-android `. Em outro caso, consulte a documentação no item 1.
+1. Com o terminal aberto no diretório do projeto, execute o comando `npm install` para instalar as dependências.
+2. Para executar o projeto você deve seguir os passos mostrados na documentação do [React Native CLI](https://reactnative.dev/docs/environment-setup). Dependendo do seu sistema operacional e plataforma de execução você deve usar comandos diferentes.
+3. Caso você queira testar no Windows usando um virtual device Android execute o comando: ` npx react-native run-android `. Em outro caso, consulte a documentação no item 1.
 
    
 
