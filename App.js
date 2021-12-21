@@ -7,21 +7,78 @@ import {
 import Button from './src/components/Button'
 import Display from './src/components/Display'
 
+var resultBuffer = 0;
+var clearDisplay = false;
+var lastOperation = null;
+
 export default function App() {
   const [displayValue, setDisplayValue] = useState('0')
-
-  function addDigit(n) {
-    setDisplayValue(n)
+  
+  function addDigit(digitedValue) {
+    var newDisplayValue = displayValue;
+    
+    if(digitedValue === '.' && displayValue.includes('.')){
+      return
+    }
+    
+    if(displayValue === "0" && digitedValue !== '.'){
+      setDisplayValue(digitedValue);
+      return
+    }
+    
+    if(clearDisplay && digitedValue !== '.'){
+      newDisplayValue = digitedValue;
+      clearDisplay = false;
+    } else {
+      newDisplayValue = newDisplayValue + digitedValue
+      clearDisplay = false;
+    }
+    setDisplayValue(newDisplayValue);
+    
   }
 
   function clearMemory() {
-    setDisplayValue('0')
+    resultBuffer = 0;
+    clearDisplay = false;
+    lastOperation = null;
+    setDisplayValue('0');
   }
 
-  function setOperation(operation) {
+  function setOperation(newOperation) {
+    let newDisplayValue = displayValue;
 
+    if(displayValue.charAt(displayValue.length - 1) == '.'){
+      newDisplayValue = parseInt(newDisplayValue + "0").toString()
+    }
+    if(clearDisplay == false){
+      resultBuffer = calculation(resultBuffer, lastOperation, newDisplayValue)
+    }
+    lastOperation = newOperation;
+
+    clearDisplay = true;
+
+    setDisplayValue(resultBuffer.toString())
   }
 
+  function calculation(buffer, operation, value){
+      value = parseFloat(value)
+
+      if(!operation) return value
+
+      if(operation === '+'){
+        return buffer + value
+      } else if(operation === '-'){
+        return buffer - value  
+      } else if(operation === '*') {
+        if(buffer == 0) buffer = 1
+        return buffer * value 
+      } else if(operation === '/') {
+        if(buffer == 0) return value
+        return buffer / value 
+      } else {
+        return buffer
+      }
+  }
 
   return (
     <View style={styles.container}>
@@ -32,7 +89,7 @@ export default function App() {
         <Button label={'7'} onClick={addDigit}/>  
         <Button label={'8'} onClick={addDigit}/>  
         <Button label={'9'} onClick={addDigit}/>  
-        <Button label={'*'} onClick={setOperation} operation />  
+        <Button label={'x'} onClick={setOperation} operation returnValue="*"/>  
         <Button label={'4'} onClick={addDigit}/>  
         <Button label={'5'} onClick={addDigit}/>  
         <Button label={'6'} onClick={addDigit}/>  

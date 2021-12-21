@@ -31,7 +31,7 @@ function widthButton(value){
   return widthSpaces.space;
 }
 
-export default function Button({onClick, label, spaces = 1, operation}) {
+export default function Button({onClick, label, spaces = 1, operation, returnValue}) {
   if(spaces > 4) {
     spaces = 1
   }
@@ -40,7 +40,7 @@ export default function Button({onClick, label, spaces = 1, operation}) {
   if(operation) stylesButton.push(styles.operationButton)
 
   return (
-    <TouchableHighlight onPress={() => onClick(label)}>
+    <TouchableHighlight onPress={() => onClick(returnValue || label)}>
       <Text style={stylesButton}>{label}</Text>
     </TouchableHighlight>
   )
